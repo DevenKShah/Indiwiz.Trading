@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Indiwiz.Trading.Web/bin/Debug/net7.0/Indiwiz.Trading.Web.dll",
+            "program": "${workspaceFolder}/src/Indiwiz.Trading.Web/bin/Debug/net7.0/Indiwiz.Trading.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Indiwiz.Trading.Web",
+            "cwd": "${workspaceFolder}/src/Indiwiz.Trading.Web",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Indiwiz.Trading.Web/Indiwiz.Trading.Web.csproj",
+                "${workspaceFolder}/src/Indiwiz.Trading.Web/Indiwiz.Trading.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Indiwiz.Trading.Web/Indiwiz.Trading.Web.csproj",
+                "${workspaceFolder}/src/Indiwiz.Trading.Web/Indiwiz.Trading.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Indiwiz.Trading.Web/Indiwiz.Trading.Web.csproj"
+                "${workspaceFolder}/src/Indiwiz.Trading.Web/Indiwiz.Trading.Web.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
