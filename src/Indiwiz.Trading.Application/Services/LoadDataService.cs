@@ -1,11 +1,6 @@
-using System.Threading.Tasks;
+using Indiwiz.Trading.Domain.Interfaces;
+
 namespace Indiwiz.Trading.Application.Services;
-
-public interface ILoadDataService
-{
-    public Task LoadData();
-}
-
 
 public class LoadDataService : ILoadDataService
 {

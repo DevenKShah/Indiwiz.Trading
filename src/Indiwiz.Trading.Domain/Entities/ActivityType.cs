@@ -1,5 +1,5 @@
 using System.Collections.Concurrent;
-namespace Indiwiz.Trading.Application;
+namespace Indiwiz.Trading.Domain.Entities;
 
 public enum ActivityType
 {
