@@ -1,6 +1,6 @@
 namespace Indiwiz.Trading.Domain.Interfaces;
 
-public interface ILoadDataService
+public interface ILoadActivityDataService
 {
     public Task LoadData();
 }

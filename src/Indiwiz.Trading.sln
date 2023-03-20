@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indiwiz.Trading.Data", "Ind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indiwiz.Trading.Domain", "Indiwiz.Trading.Domain\Indiwiz.Trading.Domain.csproj", "{92BD7BD9-438A-4797-98C6-0B94B60136D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indiwiz.Trading.Infrastructure", "Indiwiz.Trading.Infrastructure\Indiwiz.Trading.Infrastructure.csproj", "{AA085D8D-4E0A-4415-9A12-343499B1499A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{92BD7BD9-438A-4797-98C6-0B94B60136D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92BD7BD9-438A-4797-98C6-0B94B60136D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92BD7BD9-438A-4797-98C6-0B94B60136D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA085D8D-4E0A-4415-9A12-343499B1499A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA085D8D-4E0A-4415-9A12-343499B1499A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA085D8D-4E0A-4415-9A12-343499B1499A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA085D8D-4E0A-4415-9A12-343499B1499A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
