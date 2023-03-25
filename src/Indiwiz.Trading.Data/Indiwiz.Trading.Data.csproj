@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Indiwiz.Trading.Domain\Indiwiz.Trading.Domain.csproj" />
   </ItemGroup>
 
 </Project>
