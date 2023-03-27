@@ -1,0 +1,14 @@
+@page
+@model Indiwiz.Trading.Web.Pages.UploadActivity
+@{
+    ViewData["Title"] = "Upload Activity CSV";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" asp-for="Upload" />
+        <input type="submit" />
+    </form>
+</div>

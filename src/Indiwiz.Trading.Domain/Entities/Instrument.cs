@@ -1,4 +1,3 @@
-using System.Runtime.Intrinsics.X86;
 namespace Indiwiz.Trading.Domain.Entities;
 
 public class Instrument
@@ -7,5 +6,6 @@ public class Instrument
     public string Title { get; set; } = null!;
     public CurrencyName Currency { get; set; }
     public string Ticker { get; set; } = null!;
+    public string ISIN { get; set; } = null!;
     public virtual List<Order> Orders { get; set; } = new();
 }
