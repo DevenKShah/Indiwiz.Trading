@@ -1,12 +1,16 @@
-using System.Collections.Concurrent;
+using System.ComponentModel;
+
 namespace Indiwiz.Trading.Domain.Entities;
 
 public enum ActivityType
 {
-    MonthlyStatement,
     Order,
+    [Description("MONTHLY_STATEMENT")]
+    MonthlyStatement,
+    [Description("INTEREST_FROM_CASH")]
     InterestFromCash,
     Dividend,
-    TopUp,
+    [Description("TOP_UP")]
+    Topup,
     Withdrawal
 }

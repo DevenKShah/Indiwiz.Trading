@@ -20,12 +20,10 @@ namespace Indiwiz.Trading.Web.Pages
         public IFormFile Upload { get; set; } = null!;
         public void OnPostAsync()
         {
-            using (var reader = Upload.OpenReadStream())
-            {
-                var data = _loadActivityDataService.LoadData(reader);
-                var instruments = data.Where(d => d.Type == ActivityType.Order.ToString().ToUpper()).DistinctBy(a => a.ISIN).Select(x => (Instrument)x).ToList();
-                _logger.LogInformation($"Total instruments found {instruments.Count}");
-            }
+            using var reader = Upload.OpenReadStream();
+            var data = _loadActivityDataService.LoadData(reader);
+            var instruments = data.Where(d => d.ActivityType == ActivityType.Order).DistinctBy(a => a.ISIN).Select(x => (Instrument)x).ToList();
+            _logger.LogInformation("Total instruments found {count}", instruments.Count);
         }
     }
 }

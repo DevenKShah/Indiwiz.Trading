@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\Indiwiz.Trading.Application\Indiwiz.Trading.Application.csproj" />
-    <ProjectReference Include="..\Indiwiz.Trading.Infrastructure\Indiwiz.Trading.Infrastructure.csproj" />
     <ProjectReference Include="..\Indiwiz.Trading.Data\Indiwiz.Trading.Data.csproj" />
+    <ProjectReference Include="..\Indiwiz.Trading.Domain\Indiwiz.Trading.Domain.csproj" />
+    <ProjectReference Include="..\Indiwiz.Trading.Infrastructure\Indiwiz.Trading.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
