@@ -12,6 +12,6 @@ public class InstrumentsRepository : IInstrumentsRepository
         _dataContext = dataContext;
     }
     public async Task<List<Instrument>> GetInstruments() => await _dataContext.Instruments.ToListAsync();
-    public async Task AddInstruments(List<Instrument> instruments) => await _dataContext.Instruments.AddRangeAsync(instruments);
+    public async Task AddInstruments(IEnumerable<Instrument> instruments) => await _dataContext.Instruments.AddRangeAsync(instruments);
     public async Task AddInstrument(Instrument instrument) => await _dataContext.Instruments.AddAsync(instrument);
 }

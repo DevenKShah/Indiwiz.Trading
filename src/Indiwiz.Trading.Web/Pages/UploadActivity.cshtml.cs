@@ -31,12 +31,30 @@ namespace Indiwiz.Trading.Web.Pages
 
         public async Task OnPostAsync(CancellationToken cancellationToken)
         {
-            using var reader = Upload.OpenReadStream();
-            var data = _loadActivityDataService.LoadData(reader);
-            var instruments = data.Where(d => d.ActivityType == ActivityType.Order).DistinctBy(a => a.ISIN).Select(x => (Instrument)x).ToList();
-            await _instrumentsRepository.AddInstruments(instruments);
+            List<ActivityDataModel> importedData = LoadDataFromCsv();
+
+            await AddNewInstruments(importedData);
+
             await _tradingDataContext.SaveChangesAsync(cancellationToken);
-            _logger.LogInformation("Total instruments found {count}", instruments.Count);
+
+        }
+
+        private List<ActivityDataModel> LoadDataFromCsv()
+        {
+            using var reader = Upload.OpenReadStream();
+            return _loadActivityDataService.LoadData(reader);
+        }
+
+        private async Task AddNewInstruments(List<ActivityDataModel> data)
+        {
+            var instruments = data.Where(d => d.ActivityType == ActivityType.Order).DistinctBy(a => a.ISIN).Select(x => (Instrument)x).ToList();
+            var existingInstruments = await _instrumentsRepository.GetInstruments();
+
+            var newInstruments = instruments.ExceptBy(existingInstruments.Select(i => i.ISIN), i => i.ISIN);
+
+            await _instrumentsRepository.AddInstruments(newInstruments);
+
+            _logger.LogInformation("Total instruments added {count}", newInstruments.Count());
         }
     }
 }
