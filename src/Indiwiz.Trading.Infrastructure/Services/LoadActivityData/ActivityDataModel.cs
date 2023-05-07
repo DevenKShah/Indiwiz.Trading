@@ -24,7 +24,7 @@ public class ActivityDataModel
         {
             ISIN = source.ISIN!,
             Title = source.Title!,
-            Currency = source.InstrumentCurrency.GetValueOrDefault(),
+            CurrencyName = source.InstrumentCurrency.GetValueOrDefault(),
             Ticker = source.Ticker!,
         };
 }

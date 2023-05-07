@@ -1,25 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Indiwiz.Trading.Data.Configurations;
 using Indiwiz.Trading.Domain.Entities;
+using Indiwiz.Trading.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Indiwiz.Trading.Data
+namespace Indiwiz.Trading.Data;
+
+public class TradingDataContext : DbContext, ITradingDataContext
 {
-    public class TradingDataContext : DbContext
+    public DbSet<Instrument> Instruments => Set<Instrument>();
+
+    public TradingDataContext() { }
+    public TradingDataContext(DbContextOptions<TradingDataContext> options) : base(options) { }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public DbSet<Instrument> Instruments { get; set; } = null!;
-        public string DbPath { get; set; } = null!;
-
-        public TradingDataContext()
-        {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "trading.db");
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={DbPath}");
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(InstrumentConfiguration).Assembly);
     }
 }

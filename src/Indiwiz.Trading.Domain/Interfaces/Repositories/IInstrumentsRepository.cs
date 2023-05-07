@@ -4,7 +4,7 @@ namespace Indiwiz.Trading.Domain.Interfaces.Repositories;
 
 public interface IInstrumentsRepository
 {
-    void AddInstrument(Instrument instrument);
-    void AddInstruments(List<Instrument> instruments);
+    Task AddInstrument(Instrument instrument);
+    Task AddInstruments(List<Instrument> instruments);
     Task<List<Instrument>> GetInstruments();
 }

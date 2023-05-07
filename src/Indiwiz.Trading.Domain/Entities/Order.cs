@@ -1,8 +1,7 @@
 namespace Indiwiz.Trading.Domain.Entities;
 
-public class Order
+public class Order : EntityBase
 {
-    public int Id { get; set; }
     public int InvestmentId { get; set; }
     public OrderType OrderType { get; set; }
     public decimal Quantity { get; set; }

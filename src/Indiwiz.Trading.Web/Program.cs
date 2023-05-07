@@ -1,11 +1,15 @@
-using Indiwiz.Trading.Web.StartUp;
+using Indiwiz.Trading.Data.Extensions;
+using Indiwiz.Trading.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
 
-builder.Services.AddApplicationServices();
+builder.Services
+    .AddInfrastructureRegistrations()
+    .AddDataRegistrations(builder.Configuration, builder.Environment)
+    .AddLogging()
+    .AddRazorPages();
 
 var app = builder.Build();
 
