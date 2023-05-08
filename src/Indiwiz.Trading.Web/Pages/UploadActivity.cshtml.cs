@@ -35,6 +35,8 @@ namespace Indiwiz.Trading.Web.Pages
 
             await AddNewInstruments(importedData);
 
+            await AddOrders(importedData);
+
             await _tradingDataContext.SaveChangesAsync(cancellationToken);
 
         }
@@ -47,7 +49,7 @@ namespace Indiwiz.Trading.Web.Pages
 
         private async Task AddNewInstruments(List<ActivityDataModel> data)
         {
-            var instruments = data.Where(d => d.ActivityType == ActivityType.Order).DistinctBy(a => a.ISIN).Select(x => (Instrument)x).ToList();
+            var instruments = data.Where(d => d.ActivityType == ActivityType.Order).DistinctBy(a => a.ISIN).Select(x => (Instrument)x);
             var existingInstruments = await _instrumentsRepository.GetInstruments();
 
             var newInstruments = instruments.ExceptBy(existingInstruments.Select(i => i.ISIN), i => i.ISIN);
@@ -55,6 +57,19 @@ namespace Indiwiz.Trading.Web.Pages
             await _instrumentsRepository.AddInstruments(newInstruments);
 
             _logger.LogInformation("Total instruments added {count}", newInstruments.Count());
+        }
+
+        private async Task AddOrders(List<ActivityDataModel> data)
+        {
+            var instruments = await _instrumentsRepository.GetInstruments();
+
+            var orders = data.Where(d => d.ActivityType == ActivityType.Order);
+            foreach (var order in orders)
+            {
+                var instrument = instruments.Single(i => i.ISIN == order.ISIN);
+                if (instrument.Orders.Any(o => o.OrderId == order.OrderId)) continue;
+                instrument.Orders.Add(order);
+            }
         }
     }
 }

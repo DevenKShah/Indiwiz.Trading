@@ -1,7 +1,9 @@
-namespace Indiwiz.Trading.Domain.Entities;
+﻿namespace Indiwiz.Trading.Domain.Entities;
 
 public enum OrderType
 {
-    Buy,
-    Sell
+    Basic,
+    Limit,
+    LimitTriggered,
+    Market
 }
