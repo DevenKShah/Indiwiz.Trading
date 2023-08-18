@@ -1,0 +1,31 @@
+﻿@page "{instrumentId:long}"
+@using Indiwiz.Trading.Domain.Entities;
+@model Indiwiz.Trading.Web.Pages.InstrumentDetailsModel
+@{
+}
+
+<h1>@Model.Instrument.Title</h1>
+<p>Instrument Curreny: <b>@Model.Instrument.CurrencyName</b></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Order id</th>
+      <th scope="col">Order date</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Rate in @Model.Instrument.CurrencyName</th>
+      <th scope="col">Cost in GBP</th>
+    </tr>
+  </thead>
+  @foreach(var order in Model.Instrument.Orders.OrderBy(o => o.OrderDate))
+    {
+        var rowClass = order.TransactionType == TransactionType.Buy ? "table-danger" : "table-success";
+        <tr class="@rowClass">
+          <td>@order.Id</td>
+          <td>@order.OrderDate.ToShortDateString()</td>
+          <td>@order.Quantity</td>
+          <td>@order.RateInInstrumentCurrency</td>
+          <td>@order.AmountInAccountCurrency</td>
+        </tr>
+    }
+</table>

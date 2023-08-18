@@ -7,4 +7,5 @@ public interface IInstrumentsRepository
     Task AddInstrument(Instrument instrument);
     Task AddInstruments(IEnumerable<Instrument> instruments);
     Task<List<Instrument>> GetInstruments();
+    Task<Instrument> GetInstrumentById(long instrumentId);
 }

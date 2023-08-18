@@ -15,7 +15,7 @@ public class InstrumentsModel : PageModel
         _instrumentsRepository = instrumentsRepository;
     }
 
-    public async Task OnGet()
+    public async Task OnGetAsync()
     {
         Instruments = await _instrumentsRepository.GetInstruments();
     }

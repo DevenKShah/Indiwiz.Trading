@@ -11,6 +11,8 @@ builder.Services
     .AddLogging()
     .AddRazorPages();
 
+builder.Services.Configure<RouteOptions>(o => o.LowercaseUrls = true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,8 +25,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();
 
 app.UseAuthorization();
 

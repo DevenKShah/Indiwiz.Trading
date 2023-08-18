@@ -5,7 +5,7 @@
         @foreach(var instrument in Model.Instruments)
         {
           <li>
-            <a href="#">@instrument.Title</a>
+                <a asp-page="/InstrumentDetails" asp-route-instrumentId="@instrument.Id">@instrument.Title</a>
           </li>
         }
     </ul>
