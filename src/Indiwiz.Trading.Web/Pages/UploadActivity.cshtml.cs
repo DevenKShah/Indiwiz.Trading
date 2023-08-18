@@ -38,7 +38,6 @@ namespace Indiwiz.Trading.Web.Pages
             await AddOrders(importedData);
 
             await _tradingDataContext.SaveChangesAsync(cancellationToken);
-
         }
 
         private List<ActivityDataModel> LoadDataFromCsv()

@@ -1,0 +1,12 @@
+﻿@page
+@model Indiwiz.Trading.Web.Pages.InstrumentsModel
+@{
+    <ul>
+        @foreach(var instrument in Model.Instruments)
+        {
+          <li>
+            <a href="#">@instrument.Title</a>
+          </li>
+        }
+    </ul>
+}
