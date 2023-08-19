@@ -11,5 +11,7 @@
     [OrderDate] DATETIME2 NOT NULL,
     CONSTRAINT [PK_Order] PRIMARY KEY ([Id]),
     CONSTRAINT [UK_Order] UNIQUE ([OrderId]),
-    CONSTRAINT [FK_Order_Instrument] FOREIGN KEY ([InstrumentId]) REFERENCES [Instrument]([Id])
+    CONSTRAINT [FK_Order_Instrument] FOREIGN KEY ([InstrumentId]) REFERENCES [Instrument]([Id]),
+    INDEX [IX_Order_InstrumentId] ([InstrumentId]),
+    INDEX [IX_Order_OrderDate] ([OrderDate])
 )

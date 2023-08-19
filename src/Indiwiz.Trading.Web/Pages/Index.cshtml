@@ -8,3 +8,15 @@
     <h1 class="display-4">Trading.Net</h1>
     <p>Activties upto @Model.LastActivityDate.ToShortDateString()</p>
 </div>
+
+<div>
+    <div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Interest received so far</h5>
+                <p class="card-text">@Model.InterestEarnedSoFar</p>
+                <a asp-page="/Interests" class="btn btn-primary">Interests</a>
+            </div>
+        </div>
+    </div>
+</div>

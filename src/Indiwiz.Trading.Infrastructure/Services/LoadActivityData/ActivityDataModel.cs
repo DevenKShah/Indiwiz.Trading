@@ -40,6 +40,9 @@ public class ActivityDataModel
             AmountInAccountCurrency = source.TotalAmount.GetValueOrDefault(),
             OrderDate = source.TimeStamp
         };
+
+    public static implicit operator Interest(ActivityDataModel source) =>
+        new() { ReceivedDate = source.TimeStamp, Amount = source.TotalAmount.GetValueOrDefault() };
 }
 
 public class ActivityDataModelMapper : ClassMap<ActivityDataModel>

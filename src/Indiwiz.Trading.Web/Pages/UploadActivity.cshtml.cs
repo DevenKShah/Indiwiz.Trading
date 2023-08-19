@@ -13,17 +13,20 @@ namespace Indiwiz.Trading.Web.Pages
         private readonly ILoadActivityDataService _loadActivityDataService;
         private readonly ITradingDataContext _tradingDataContext;
         private readonly IInstrumentsRepository _instrumentsRepository;
+        private readonly IInterestRepository _interestRepository;
 
         public UploadActivity(
             ILogger<UploadActivity> logger,
             ILoadActivityDataService loadActivityDataService,
             ITradingDataContext tradingDataContext,
-            IInstrumentsRepository instrumentsRepository)
+            IInstrumentsRepository instrumentsRepository,
+            IInterestRepository interestRepository)
         {
             _logger = logger;
             _loadActivityDataService = loadActivityDataService;
             _tradingDataContext = tradingDataContext;
             _instrumentsRepository = instrumentsRepository;
+            _interestRepository = interestRepository;
         }
 
         [BindProperty]
@@ -36,6 +39,8 @@ namespace Indiwiz.Trading.Web.Pages
             await AddNewInstruments(importedData, cancellationToken);
 
             await AddOrders(importedData, cancellationToken);
+
+            await AddInterestReceived(importedData, cancellationToken);
 
             return new RedirectToPageResult("Instruments");
         }
@@ -71,6 +76,19 @@ namespace Indiwiz.Trading.Web.Pages
                 if (instrument.Orders.Any(o => o.OrderId == order.OrderId)) continue;
                 instrument.Orders.Add(order);
             }
+
+            await _tradingDataContext.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task AddInterestReceived(List<ActivityDataModel> data, CancellationToken cancellationToken)
+        {
+            var existingData = await _interestRepository.GetAllInterests();
+
+            var latestImportedDate = existingData.OrderByDescending(d => d.ReceivedDate).FirstOrDefault()?.ReceivedDate;
+
+            var interestReceived = data.Where(d => d.ActivityType == ActivityType.InterestFromCash && d.TimeStamp > latestImportedDate.GetValueOrDefault()).Select(i => (Interest)i).ToList();
+
+            await _interestRepository.AddInterests(interestReceived);
 
             await _tradingDataContext.SaveChangesAsync(cancellationToken);
         }

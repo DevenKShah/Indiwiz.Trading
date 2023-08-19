@@ -1,0 +1,24 @@
+﻿@page
+@model InterestsModel
+@{
+    ViewData["Title"] = "Interest recevied";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>
+        </tr>
+    </thead>
+    @foreach (var interest in Model.Interests.OrderBy(o => o.ReceivedDate))
+    {
+        <tr class="table-warning">
+            <td>@interest.ReceivedDate.ToShortDateString()</td>
+            <td>@interest.Amount</td>
+        </tr>
+    }
+</table>
+
