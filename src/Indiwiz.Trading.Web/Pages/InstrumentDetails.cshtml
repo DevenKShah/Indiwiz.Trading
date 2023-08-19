@@ -2,9 +2,11 @@
 @using Indiwiz.Trading.Domain.Entities;
 @model Indiwiz.Trading.Web.Pages.InstrumentDetailsModel
 @{
+    ViewData["Title"] = @Model.Instrument.Title;
 }
 
-<h1>@Model.Instrument.Title</h1>
+<h1>@ViewData["Title"]</h1>
+
 <p>Instrument Curreny: <b>@Model.Instrument.CurrencyName</b></p>
 
 <table class="table table-striped">

@@ -29,13 +29,15 @@ namespace Indiwiz.Trading.Web.Pages
         [BindProperty]
         public IFormFile Upload { get; set; } = null!;
 
-        public async Task OnPostAsync(CancellationToken cancellationToken)
+        public async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
             List<ActivityDataModel> importedData = LoadDataFromCsv();
 
             await AddNewInstruments(importedData, cancellationToken);
 
             await AddOrders(importedData, cancellationToken);
+
+            return new RedirectToPageResult("Instruments");
         }
 
         private List<ActivityDataModel> LoadDataFromCsv()
