@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-    @foreach(var card in Model.Cards)
+    @foreach (var card in Model.Cards)
     {
         <div class="col-sm-4">
             <div class="card text-bg-info mb-3" style="width: 18rem;">
@@ -25,4 +25,19 @@
             </div>
         </div>
     }
+    <div class="col-sm-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="card text-bg-info mb-3" style="width: 18rem;">
+                <div class="card-header">Instruments</div>
+                <div class="card-body">
+                    <select class="form-select form-select-sm mb-3" asp-for="SelectedInstrumentId" asp-items="@Model.Instruments">
+                        <option selected>Select an instrument</option>
+                    </select>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" class="btn btn-primary" value="Go to details" />
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

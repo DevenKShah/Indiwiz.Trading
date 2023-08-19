@@ -8,7 +8,7 @@ namespace Indiwiz.Trading.Web.Pages;
 
 public class InstrumentsModel : PageModel
 {
-    private IInstrumentsRepository _instrumentsRepository;
+    private readonly IInstrumentsRepository _instrumentsRepository;
 
     public SelectList Instruments { get; set; }
 
