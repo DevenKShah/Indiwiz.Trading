@@ -9,6 +9,7 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 {
     public void Configure(EntityTypeBuilder<Order> builder)
     {
+        builder.ToTable(nameof(Order));
         builder
             .Property(o => o.TransactionType)
             .HasConversion(new EnumToStringConverter<TransactionType>());

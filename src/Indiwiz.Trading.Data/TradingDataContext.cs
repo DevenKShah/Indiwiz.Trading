@@ -8,6 +8,7 @@ namespace Indiwiz.Trading.Data;
 public class TradingDataContext : DbContext, ITradingDataContext
 {
     public DbSet<Instrument> Instruments => Set<Instrument>();
+    public DbSet<Order> Orders => Set<Order>();
 
     public TradingDataContext() { }
     public TradingDataContext(DbContextOptions<TradingDataContext> options) : base(options) { }
