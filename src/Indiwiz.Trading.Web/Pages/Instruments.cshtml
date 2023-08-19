@@ -7,12 +7,13 @@
 
 <h1>@ViewData["Title"]</h1>
 
-  <ul>
-      @foreach(var instrument in Model.Instruments.OrderBy(i => i.Title))
-      {
-        <li>
-              <a asp-page="/InstrumentDetails" asp-route-instrumentId="@instrument.Id">@instrument.Title</a>
-        </li>
-      }
-  </ul>
+<div class="row col-sm-3">
+    <form method="post" enctype="multipart/form-data">
+        <select class="form-select form-select-lg mb-3" asp-for="SelectedInstrumentId" asp-items="@Model.Instruments">
+            <option selected>Select an instrument</option>
+        </select>
+        <input type="submit" />
+    </form>
+</div>
+
 

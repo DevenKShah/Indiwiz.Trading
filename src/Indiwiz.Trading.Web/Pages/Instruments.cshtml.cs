@@ -1,6 +1,8 @@
 using Indiwiz.Trading.Domain.Entities;
 using Indiwiz.Trading.Domain.Interfaces.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Indiwiz.Trading.Web.Pages;
 
@@ -8,7 +10,10 @@ public class InstrumentsModel : PageModel
 {
     private IInstrumentsRepository _instrumentsRepository;
 
-    public IEnumerable<Instrument> Instruments { get; set; }
+    public SelectList Instruments { get; set; }
+
+    [BindProperty]
+    public long SelectedInstrumentId { get; set; }
 
     public InstrumentsModel(IInstrumentsRepository instrumentsRepository)
     {
@@ -17,6 +22,12 @@ public class InstrumentsModel : PageModel
 
     public async Task OnGetAsync()
     {
-        Instruments = await _instrumentsRepository.GetInstruments();
+        var instruments = await _instrumentsRepository.GetInstruments();
+        Instruments = new(instruments, nameof(Instrument.Id), nameof(Instrument.Title));
+    }
+
+    public IActionResult OnPost()
+    {
+        return new RedirectToPageResult("InstrumentDetails", new { instrumentId = SelectedInstrumentId });
     }
 }
