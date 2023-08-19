@@ -10,6 +10,7 @@ public class TradingDataContext : DbContext, ITradingDataContext
     public DbSet<Instrument> Instruments => Set<Instrument>();
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<Interest> InterestReceived => Set<Interest>();
+    public DbSet<Investment> Investments => Set<Investment>();
 
     public TradingDataContext() { }
     public TradingDataContext(DbContextOptions<TradingDataContext> options) : base(options) { }

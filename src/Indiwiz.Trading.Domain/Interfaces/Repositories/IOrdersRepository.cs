@@ -2,7 +2,7 @@
 
 namespace Indiwiz.Trading.Domain.Interfaces.Repositories;
 
-public interface IOrderRepository
+public interface IOrdersRepository
 {
     Task<Order> GetLatestOrder();
 }

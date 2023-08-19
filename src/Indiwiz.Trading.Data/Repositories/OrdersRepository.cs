@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Indiwiz.Trading.Data.Repositories;
 
-internal class OrderRepository : IOrderRepository
+internal class OrdersRepository : IOrdersRepository
 {
     private readonly TradingDataContext _dataContext;
 
-    public OrderRepository(TradingDataContext dataContext)
+    public OrdersRepository(TradingDataContext dataContext)
     {
         _dataContext = dataContext;
     }

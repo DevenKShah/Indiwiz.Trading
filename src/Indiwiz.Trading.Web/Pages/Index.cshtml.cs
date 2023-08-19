@@ -6,18 +6,21 @@ namespace Indiwiz.Trading.Web.Pages;
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    private readonly IOrderRepository _orderRepository;
+    private readonly IOrdersRepository _orderRepository;
     private readonly IInterestRepository _interestRepository;
+    private readonly IInvestmentsRepository _investmentsRepository;
 
-    public DateTime LastActivityDate { get; set; }
-    public decimal InterestEarnedSoFar { get; set; }
-
-    public IndexModel(ILogger<IndexModel> logger, IOrderRepository orderRepository, IInterestRepository interestRepository)
+    public IndexModel(ILogger<IndexModel> logger, IOrdersRepository orderRepository, IInterestRepository interestRepository, IInvestmentsRepository investmentsRepository)
     {
         _logger = logger;
         _orderRepository = orderRepository;
         _interestRepository = interestRepository;
+        _investmentsRepository = investmentsRepository;
     }
+
+    public DateTime LastActivityDate { get; set; }
+    public decimal InterestEarnedSoFar { get; set; }
+    public decimal InvestmentsMadeSoFar { get; set; }
 
     public async Task OnGetAsync()
     {
@@ -26,5 +29,8 @@ public class IndexModel : PageModel
 
         var interests = await _interestRepository.GetAllInterests();
         InterestEarnedSoFar = interests.Sum(i => i.Amount);
+
+        var investments = await _investmentsRepository.GetAllInvestments();
+        InvestmentsMadeSoFar = investments.Sum(i => i.Amount);
     }
 }

@@ -9,8 +9,17 @@
     <p>Activties upto @Model.LastActivityDate.ToShortDateString()</p>
 </div>
 
-<div>
-    <div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Investment made so far</h5>
+                <p class="card-text">@Model.InvestmentsMadeSoFar</p>
+                <a asp-page="/Investments" class="btn btn-primary">Investments</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">Interest received so far</h5>

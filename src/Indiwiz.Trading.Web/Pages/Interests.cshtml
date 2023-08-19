@@ -15,7 +15,7 @@
     </thead>
     @foreach (var interest in Model.Interests.OrderBy(o => o.ReceivedDate))
     {
-        <tr class="table-warning">
+        <tr class="table-success">
             <td>@interest.ReceivedDate.ToShortDateString()</td>
             <td>@interest.Amount</td>
         </tr>

@@ -13,7 +13,7 @@ public class InterestsModel : PageModel
         _interestRepository = interestRepository;
     }
 
-    public List<Interest> Interests { get; set; }
+    public List<Interest> Interests { get; set; } = new();
 
     public async Task OnGetAsync()
     {
