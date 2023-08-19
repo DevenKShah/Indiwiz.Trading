@@ -6,26 +6,23 @@
 
 <div class="text-center">
     <h1 class="display-4">Trading.Net</h1>
-    <p>Activties upto @Model.LastActivityDate.ToShortDateString()</p>
+    <p>Updated on @Model.LastActivityDate.ToShortDateString()</p>
+    <br />
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Investment made so far</h5>
-                <p class="card-text">@Model.InvestmentsMadeSoFar</p>
-                <a asp-page="/Investments" class="btn btn-primary">Investments</a>
+    @foreach(var card in Model.Cards)
+    {
+        <div class="col-sm-4">
+            <div class="card text-bg-info mb-3" style="width: 18rem;">
+                <div class="card-header">@card.Header</div>
+                <div class="card-body">
+                    <h5 class="card-text">@card.Body</h5>
+                </div>
+                <div class="card-footer">
+                    <a asp-page="/@card.Header" class="btn btn-primary">@card.Header</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Interest received so far</h5>
-                <p class="card-text">@Model.InterestEarnedSoFar</p>
-                <a asp-page="/Interests" class="btn btn-primary">Interests</a>
-            </div>
-        </div>
-    </div>
+    }
 </div>

@@ -19,8 +19,8 @@ public class IndexModel : PageModel
     }
 
     public DateTime LastActivityDate { get; set; }
-    public decimal InterestEarnedSoFar { get; set; }
-    public decimal InvestmentsMadeSoFar { get; set; }
+
+    public List<Card> Cards { get; set; } = new();
 
     public async Task OnGetAsync()
     {
@@ -28,9 +28,14 @@ public class IndexModel : PageModel
         LastActivityDate = order.OrderDate;
 
         var interests = await _interestRepository.GetAllInterests();
-        InterestEarnedSoFar = interests.Sum(i => i.Amount);
+
+        Cards.Add(new("Interests", interests.Sum(i => i.Amount).ToString("C")));
 
         var investments = await _investmentsRepository.GetAllInvestments();
-        InvestmentsMadeSoFar = investments.Sum(i => i.Amount);
+
+        Cards.Add(new("Investments", investments.Sum(i => i.Amount).ToString("C")));
     }
 }
+
+public record Card(string Header, string Body);
+
