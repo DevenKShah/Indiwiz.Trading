@@ -20,11 +20,13 @@
                     <h5 class="card-text">@card.Body</h5>
                 </div>
                 <div class="card-footer">
-                    <a asp-page="/@card.Header" class="btn btn-primary">@card.Header</a>
+                    <a asp-page="/activities" asp-route-activityType="@card.ActivityType.ToString()" class="btn btn-primary">@card.Header</a>
                 </div>
             </div>
         </div>
     }
+</div>
+<div class ="row">
     <div class="col-sm-4">
         <form method="post" enctype="multipart/form-data">
             <div class="card text-bg-info mb-3" style="width: 18rem;">

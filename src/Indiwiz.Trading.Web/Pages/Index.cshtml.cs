@@ -9,16 +9,14 @@ namespace Indiwiz.Trading.Web.Pages;
 public class IndexModel : PageModel
 {
     private readonly IOrdersRepository _orderRepository;
-    private readonly IInterestRepository _interestRepository;
-    private readonly IInvestmentsRepository _investmentsRepository;
     private readonly IInstrumentsRepository _instrumentsRepository;
+    private readonly IActivitiesRepository _activitiesRepository;
 
-    public IndexModel(IOrdersRepository orderRepository, IInterestRepository interestRepository, IInvestmentsRepository investmentsRepository, IInstrumentsRepository instrumentsRepository)
+    public IndexModel(IOrdersRepository orderRepository, IInstrumentsRepository instrumentsRepository, IActivitiesRepository activitiesRepository)
     {
         _orderRepository = orderRepository;
-        _interestRepository = interestRepository;
-        _investmentsRepository = investmentsRepository;
         _instrumentsRepository = instrumentsRepository;
+        _activitiesRepository = activitiesRepository;
     }
 
     public DateTime LastActivityDate { get; set; }
@@ -27,20 +25,19 @@ public class IndexModel : PageModel
 
     [BindProperty]
     public long SelectedInstrumentId { get; set; }
-    public SelectList Instruments { get; set; }
+    public SelectList Instruments { get; set; } = null!;
 
     public async Task OnGetAsync()
     {
         var order = await _orderRepository.GetLatestOrder();
         LastActivityDate = order.OrderDate;
 
-        var interests = await _interestRepository.GetAllInterests();
+        var activities = await _activitiesRepository.GetAllActivities();
 
-        Cards.Add(new("Interests", interests.Sum(i => i.Amount).ToString("C")));
-
-        var investments = await _investmentsRepository.GetAllInvestments();
-
-        Cards.Add(new("Investments", investments.Sum(i => i.Amount).ToString("C")));
+        Cards.Add(new(ActivityType.Topup, "Investments", activities.Where(a => a.ActivityType == ActivityType.Topup).Sum(i => i.Amount).ToString("C")));
+        Cards.Add(new(ActivityType.InterestFromCash, "Interests", activities.Where(a => a.ActivityType == ActivityType.InterestFromCash).Sum(i => i.Amount).ToString("C")));
+        Cards.Add(new(ActivityType.Withdrawal, "Withdrawals", activities.Where(a => a.ActivityType == ActivityType.Withdrawal).Sum(i => i.Amount).ToString("C")));
+        Cards.Add(new(ActivityType.Dividend, "Dividends", activities.Where(a => a.ActivityType == ActivityType.Dividend).Sum(i => i.Amount).ToString("C")));
 
         await PopulateInstruments();
     }
@@ -48,7 +45,7 @@ public class IndexModel : PageModel
     public async Task PopulateInstruments()
     {
         var instruments = await _instrumentsRepository.GetInstruments();
-        Instruments = new(instruments, nameof(Instrument.Id), nameof(Instrument.Title));
+        Instruments = new(instruments.OrderBy(i => i.Title), nameof(Instrument.Id), nameof(Instrument.Title));
     }
 
     public IActionResult OnPost()
@@ -57,5 +54,5 @@ public class IndexModel : PageModel
     }
 }
 
-public record Card(string Header, string Body);
+public record Card(ActivityType ActivityType, string Header, string Body);
 

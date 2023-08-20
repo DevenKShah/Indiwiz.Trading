@@ -61,7 +61,6 @@
   <ItemGroup>
     <Build Include="Tables\Instrument.sql" />
     <Build Include="Tables\Order.sql" />
-    <Build Include="Tables\Interest.sql" />
-    <Build Include="Tables\Investment.sql" />
+    <Build Include="Tables\Activity.sql" />
   </ItemGroup>
 </Project>

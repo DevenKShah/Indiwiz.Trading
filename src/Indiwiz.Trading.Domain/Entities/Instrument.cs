@@ -7,4 +7,5 @@ public class Instrument : EntityBase
     public CurrencyName CurrencyName { get; set; }
     public required string Ticker { get; set; }
     public virtual List<Order> Orders { get; set; } = new();
+    public virtual List<Activity> Activities { get; set; } = new();
 }

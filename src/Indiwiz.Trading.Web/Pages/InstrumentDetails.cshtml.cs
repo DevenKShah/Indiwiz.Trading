@@ -8,7 +8,7 @@ public class InstrumentDetailsModel : PageModel
 {
     private readonly IInstrumentsRepository _instrumentsRepository;
 
-    public Instrument Instrument { get; set; }
+    public Instrument Instrument { get; set; } = null!;
 
     public InstrumentDetailsModel(IInstrumentsRepository instrumentsRepository)
     {

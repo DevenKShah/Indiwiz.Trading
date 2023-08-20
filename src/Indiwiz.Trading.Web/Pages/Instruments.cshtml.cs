@@ -10,7 +10,7 @@ public class InstrumentsModel : PageModel
 {
     private readonly IInstrumentsRepository _instrumentsRepository;
 
-    public SelectList Instruments { get; set; }
+    public SelectList Instruments { get; set; } = null!;
 
     [BindProperty]
     public long SelectedInstrumentId { get; set; }

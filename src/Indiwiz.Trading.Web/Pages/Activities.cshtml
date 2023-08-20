@@ -1,7 +1,9 @@
-﻿@page
-@model InterestsModel
+﻿@page "{activityType}"
+
+@model Indiwiz.Trading.Web.Pages.ActivitiesModel
+
 @{
-    ViewData["Title"] = "Interest recevied";
+    ViewData["Title"] = @Model.PageHeader;
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -13,12 +15,11 @@
             <th scope="col">Amount</th>
         </tr>
     </thead>
-    @foreach (var interest in Model.Interests.OrderBy(o => o.ReceivedDate))
+    @foreach (var interest in Model.Activities.OrderBy(o => o.TimeStamp))
     {
         <tr class="table-success">
-            <td>@interest.ReceivedDate.ToShortDateString()</td>
+            <td>@interest.TimeStamp.ToShortDateString()</td>
             <td>@interest.Amount</td>
         </tr>
     }
 </table>
-

@@ -41,11 +41,14 @@ public class ActivityDataModel
             OrderDate = source.TimeStamp
         };
 
-    public static implicit operator Interest(ActivityDataModel source) =>
-        new() { ReceivedDate = source.TimeStamp, Amount = source.TotalAmount.GetValueOrDefault() };
+    public static implicit operator Activity(ActivityDataModel source) =>
+        new()
+        {
+            TimeStamp = source.TimeStamp,
+            Amount = source.TotalAmount.GetValueOrDefault(),
+            ActivityType = source.ActivityType
+        };
 
-    public static implicit operator Investment(ActivityDataModel source) =>
-        new() { InvestmentDate = source.TimeStamp, Amount = source.TotalAmount.GetValueOrDefault() };
 }
 
 public class ActivityDataModelMapper : ClassMap<ActivityDataModel>

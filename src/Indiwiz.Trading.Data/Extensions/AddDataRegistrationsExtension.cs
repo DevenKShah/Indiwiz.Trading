@@ -19,8 +19,7 @@ public static class AddDataRegistrationsExtension
         services.AddTransient<ITradingDataContext, TradingDataContext>(provider => provider.GetService<TradingDataContext>()!);
         services.AddTransient<IInstrumentsRepository, InstrumentsRepository>();
         services.AddTransient<IOrdersRepository, OrdersRepository>();
-        services.AddTransient<IInterestRepository, InterestRepository>();
-        services.AddTransient<IInvestmentsRepository, InvestmentsRepository>();
+        services.AddTransient<IActivitiesRepository, ActivitiesRepository>();
         return services;
     }
 }
