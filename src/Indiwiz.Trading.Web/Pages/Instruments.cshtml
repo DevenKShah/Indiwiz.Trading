@@ -7,13 +7,25 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<div class="row col-sm-3">
-    <form method="post" enctype="multipart/form-data">
-        <select class="form-select form-select-lg mb-3" asp-for="SelectedInstrumentId" asp-items="@Model.Instruments">
-            <option selected>Select an instrument</option>
-        </select>
-        <input type="submit" />
-    </form>
-</div>
-
+<table class="table table-striped">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">Title</th>
+            <th scope="col">Buy</th>
+            <th scope="col">Sell</th>
+            <th scope="col">Stock in hand</th>
+            <th scope="col">Average Price</th>
+        </tr>
+    </thead>
+    @foreach (var instrument in Model.Instruments.OrderByDescending(o => o.StockInHand).ThenBy(o => o.Title))
+    {
+        <tr class="table">
+            <td><a asp-page="/instrumentDetails" asp-route-instrumentId="@instrument.InstrumentId">@instrument.Title</a> </td>
+            <td>@instrument.TotalBuyCount</td>
+            <td>@instrument.TotalSellCount</td>
+            <td>@instrument.StockInHand</td>
+            <td>@instrument.AverageBuyPrice</td>
+        </tr>
+    }
+</table>
 
