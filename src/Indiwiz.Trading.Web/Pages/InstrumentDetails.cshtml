@@ -7,7 +7,43 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>Instrument Curreny: <b>@Model.Instrument.CurrencyName</b></p>
+<p>
+  <span class="badge text-bg-primary">@Model.Instrument.CurrencyName</span> 
+  <span class="badge text-bg-info">@Model.CurrentPrice</span>
+</p>
+
+<div class="row g-5">
+    <div class="col-md-1 col-lg-4">
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Total bought</h6>
+                    <small class="text-body-secondary">@Model.StockBought</small>
+                </div>
+                <span class="text-body-secondary">£@Model.TotalBoughtAmount</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Total sold</h6>
+                    <small class="text-body-secondary">@Model.StockSold</small>
+                </div>
+                <span class="text-body-secondary">£@Model.TotalSoldAmount</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                    <h6 class="my-0">Stock in hand in @Model.Instrument.CurrencyName</h6>
+                    <small class="text-body-secondary">@Model.StockInHand</small>
+                </div>
+                <span class="text-body-secondary">@Model.StockInHandAmount</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Profit and Loss (GBP)</span>
+                <strong>$20</strong>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6"></div>
+</div>
 
 <table class="table table-striped">
   <thead>
