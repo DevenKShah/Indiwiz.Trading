@@ -9,6 +9,7 @@ builder.Services
     .AddInfrastructureRegistrations()
     .AddDataRegistrations(builder.Configuration, builder.Environment)
     .AddLogging()
+    .AddHttpClient()
     .AddRazorPages();
 
 builder.Services.Configure<RouteOptions>(o => o.LowercaseUrls = true);

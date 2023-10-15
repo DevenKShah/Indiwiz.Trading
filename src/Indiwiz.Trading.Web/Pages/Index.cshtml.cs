@@ -34,7 +34,7 @@ public class IndexModel : PageModel
 
         var activities = await _activitiesRepository.GetAllActivities();
 
-        Cards.Add(new(ActivityType.Topup, "Investments", activities.Where(a => a.ActivityType == ActivityType.Topup).Sum(i => i.Amount).ToString("C")));
+        Cards.Add(new(ActivityType.Topup, "Investments", (activities.Where(a => a.ActivityType == ActivityType.Topup).Sum(i => i.Amount) + 6952).ToString("C")));
         Cards.Add(new(ActivityType.InterestFromCash, "Interests", activities.Where(a => a.ActivityType == ActivityType.InterestFromCash).Sum(i => i.Amount).ToString("C")));
         Cards.Add(new(ActivityType.Withdrawal, "Withdrawals", activities.Where(a => a.ActivityType == ActivityType.Withdrawal).Sum(i => i.Amount).ToString("C")));
         Cards.Add(new(ActivityType.Dividend, "Dividends", activities.Where(a => a.ActivityType == ActivityType.Dividend).Sum(i => i.Amount).ToString("C")));
