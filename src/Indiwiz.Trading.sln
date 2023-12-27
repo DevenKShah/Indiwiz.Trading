@@ -45,7 +45,6 @@ Global
 		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
