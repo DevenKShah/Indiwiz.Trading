@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indiwiz.Trading.UnitTests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indiwiz.Trading.Web", "Indiwiz.Trading.Web\Indiwiz.Trading.Web.csproj", "{CEACCD23-3EEE-44B7-BCCA-4E842CA55BFB}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Indiwiz.Trading.Database", "Indiwiz.Trading.Database\Indiwiz.Trading.Database.sqlproj", "{F61369D8-DC06-4E82-8607-3DFD3BF03520}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Indiwiz.Trading.Database", "Indiwiz.Trading.Database\Indiwiz.Trading.Database.sqlproj", "{4DA6C43A-5D69-4D09-9531-EA834483E1D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,11 +41,11 @@ Global
 		{CEACCD23-3EEE-44B7-BCCA-4E842CA55BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEACCD23-3EEE-44B7-BCCA-4E842CA55BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEACCD23-3EEE-44B7-BCCA-4E842CA55BFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F61369D8-DC06-4E82-8607-3DFD3BF03520}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4DA6C43A-5D69-4D09-9531-EA834483E1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA6C43A-5D69-4D09-9531-EA834483E1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA6C43A-5D69-4D09-9531-EA834483E1D6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4DA6C43A-5D69-4D09-9531-EA834483E1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA6C43A-5D69-4D09-9531-EA834483E1D6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

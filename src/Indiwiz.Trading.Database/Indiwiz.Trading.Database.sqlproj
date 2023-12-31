@@ -6,7 +6,7 @@
     <Name>Indiwiz.Trading.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{f61369d8-dc06-4e82-8607-3dfd3bf03520}</ProjectGuid>
+    <ProjectGuid>{4da6c43a-5d69-4d09-9531-ea834483e1d6}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
