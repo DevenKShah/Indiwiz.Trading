@@ -34,7 +34,7 @@ public record InstrumentSummary(long InstrumentId, string Title, decimal TotalBu
         decimal totalSellQuantity = sellOrders.Sum(o => o.Quantity);
         decimal totalBuyAmount = buyOrders.Sum(o => o.AmountInAccountCurrency);
         decimal totalSellAmount = sellOrders.Sum(o => o.AmountInAccountCurrency);
-        var avgPrice = buyOrders.Average(b => b.RateInInstrumentCurrency);
+        var avgPrice = buyOrders.Any() ? buyOrders.Average(b => b.RateInInstrumentCurrency) : 0;
         return new(source.Id, source.Title, totalBuyQuantity, totalBuyAmount, totalSellQuantity, totalSellAmount, totalBuyQuantity - totalSellQuantity, avgPrice);
     }
 }
