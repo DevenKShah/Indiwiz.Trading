@@ -20,6 +20,7 @@ public class InstrumentDetailsModel : PageModel
     public decimal StockInHand => StockBought - StockSold;
     public decimal StockInHandAmount => StockInHand * CurrentPrice;
     public decimal ProfitAndLoss => TotalSoldAmount + StockInHandAmount - TotalBoughtAmount;
+    public decimal TotalDividends { get; set; }
 
     public InstrumentDetailsModel(IInstrumentsRepository instrumentsRepository, IStockReaderService stockReaderService)
     {
@@ -34,6 +35,7 @@ public class InstrumentDetailsModel : PageModel
         TotalBoughtAmount = Instrument.Orders.Where(o => o.TransactionType == TransactionType.Buy).Sum(o => o.AmountInAccountCurrency);
         StockSold = Instrument.Orders.Where(o => o.TransactionType == TransactionType.Sell).Sum(o => o.Quantity);
         TotalSoldAmount = Instrument.Orders.Where(o => o.TransactionType == TransactionType.Sell).Sum(o => o.AmountInAccountCurrency);
+        TotalDividends = Instrument.Activities.Where(a => a.ActivityType == ActivityType.Dividend).Sum(a => a.Amount);
 
         CurrentPrice = await _stockReaderService.GetLastClosingPrice(Instrument.Ticker, GetExchange(Instrument.CurrencyName));
 

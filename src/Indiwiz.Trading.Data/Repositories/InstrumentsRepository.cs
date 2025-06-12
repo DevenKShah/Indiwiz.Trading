@@ -18,6 +18,7 @@ public class InstrumentsRepository : IInstrumentsRepository
         .Instruments
         .Where(i => i.Id == instrumentId)
         .Include(i => i.Orders)
+        .Include(i => i.Activities)
         .FirstAsync();
 
     public async Task AddInstruments(IEnumerable<Instrument> instruments) => await _dataContext.Instruments.AddRangeAsync(instruments);

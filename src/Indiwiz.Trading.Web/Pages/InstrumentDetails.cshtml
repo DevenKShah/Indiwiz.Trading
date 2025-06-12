@@ -40,6 +40,10 @@
                 <span>Profit and Loss (GBP)</span>
                 <strong>@Model.ProfitAndLoss.ToString("C")</strong>
             </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Dividends received (GBP)</span>
+                <strong>@Model.TotalDividends.ToString("C")</strong>
+            </li>
         </ul>
     </div>
     <div class="col-md-6"></div>
@@ -62,7 +66,7 @@
           <td>@order.Id</td>
           <td>@order.OrderDate.ToShortDateString()</td>
             <td>@order.Quantity.ToString("#.##")</td>
-            <td>@order.RateInInstrumentCurrency.ToString("C")</td>
+            <td>@order.RateInInstrumentCurrency.ToString("$###0.00")</td>
             <td>@order.AmountInAccountCurrency.ToString("C")</td>
         </tr>
     }
